@@ -43,7 +43,7 @@ export default function Home() {
       const winnerName = gameState.winner === "X" ? gameState.player1Name : gameState.player2Name
       const loseName = gameState.winner !== "X" ? gameState.player1Name : gameState.player2Name
 
-      const res = await axios.post("http://localhost:8000/players/game-result", {
+      const res = await axios.post("https://tic-toc-toe-6slw.onrender.com/game-result", {
         ...gameState,
         winnerName,
         loseName,
