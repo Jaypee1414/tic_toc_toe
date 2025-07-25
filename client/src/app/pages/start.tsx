@@ -30,7 +30,7 @@ const StartGame: React.FC<StartGameProps> = ({ startGame }) => {
 
   const fetchPlayerGame = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/players")
+      const res = await axios.get("https://tic-toc-toe-6slw.onrender.com/players")
       setPlayerState(res.data)
     } catch (error) {
       console.log(error)
