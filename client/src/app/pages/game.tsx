@@ -13,13 +13,13 @@ type GameProps = {
 const Game: React.FC<GameProps> = ({renderSquare, gameState, currentPlayerName, endGame }) => {
   return (
     <div>
-      <div className="min-h-screen flex-col flex items-center justify-center bg-[url('/img.jpg')]">
+      <div className="min-h-screen flex-col flex items-center justify-center bg-[url('/img.jpg')] px-5 md:px-0">
         <Card className="w-full max-w-lg">
         <div className="w-full  max-w-md items-left flex mx-3" onClick={endGame}>
             <ArrowLeft className="text-sm" />
           </div>
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl md:text-4xl font-bold font-hachi">Tic Tac Toe</CardTitle>
+            <CardTitle className="text-3xl md:text-4xl font-bold font-hachi">Tic Tac Toe</CardTitle>
             <div className="flex justify-between text-sm text-gray-600 mt-2">
               <span>
                 {gameState.player1Name} (X): {gameState.player1Score}

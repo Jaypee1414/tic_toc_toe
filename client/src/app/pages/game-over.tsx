@@ -12,10 +12,10 @@ type GameProps = {
 const GameOver: React.FC<GameProps> =({gameState, winnerName, continueGame, endGame}) =>{
   return (
     <div>
-      <div className="min-h-screen flex items-center justify-center bg-[url('/img.jpg')]">
+      <div className="min-h-screen flex items-center justify-center bg-[url('/img.jpg')] px-5 md:px-0">
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
-            <CardTitle className="text-xl md:text-3xl font-bold font-hachi">
+            <CardTitle className="text-2xl md:text-3xl font-bold font-hachi">
               {gameState.isDraw ? "It's a Draw!" : `${winnerName} Wins!`}
             </CardTitle>
             <CardDescription className="text-md">

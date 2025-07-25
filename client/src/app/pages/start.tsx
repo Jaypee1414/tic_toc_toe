@@ -30,7 +30,7 @@ const StartGame: React.FC<StartGameProps> = ({ startGame }) => {
 
   const fetchPlayerGame = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/players")
+      const res = await axios.get("https://tic-toc-toe-6slw.onrender.com/players")
       setPlayerState(res.data)
     } catch (error) {
       console.log(error)
@@ -43,8 +43,8 @@ const StartGame: React.FC<StartGameProps> = ({ startGame }) => {
   console.log(playerState)
   return (
     <div>
-      <div className="min-h-screen flex items-center justify-between bg-[url('/img.jpg')]">
-        <div className="w-full  items-center flex justify-center">
+      <div className="min-h-screen w-full flex flex-col md:flex-row items-center justify-evenly md:justify-between bg-[url('/img.jpg')] p-4">
+        <div className="w-full px-5 md:px-0  items-center flex justify-center">
           <Card className="w-full max-w-md">
             <CardHeader className="text-center">
               <CardTitle className="text-2xl md:text-4xl font-extrabold text-gray-800 font-hachi">
@@ -65,15 +65,16 @@ const StartGame: React.FC<StartGameProps> = ({ startGame }) => {
             </CardContent>
           </Card>
         </div>
-        <Card className="w-screen max-w-sm md:max-w-md h-screen">
+        <div className="w-full px-5 md:px-0  items-center flex justify-center">
+        <Card className="w-screen max-w-sm md:max-w-md h-[350px] md:h-screen">
           <CardHeader className="text-center">
             <CardTitle className="text-lg md:text-5xl font-bold text-gray-800  font-hachi italic">
               Scoreboard
             </CardTitle>
-            <CardDescription className="text-sm md:text-lg">
+            <CardDescription className="text-md md:text-lg">
               Player History Game Scoreboard
             </CardDescription>
-            <CardContent className="px-0 max-h-[720px] overflow-y-auto scroll-hide">
+            <CardContent className="px-0 h-[250px] md:h-[720px] overflow-y-auto scroll-hide">
               {playerState.length > 0 && playerState.map((player: Player, index: number) => (
                 <div key={index} className="flex flex-col gap-2 mt-5 w-full">
                   <span className=" text-xs md:text-sm">{player.player1Name} ({player.player1Wins}) vs {player.player2Name} ({player.player2Wins}) </span>
@@ -83,6 +84,7 @@ const StartGame: React.FC<StartGameProps> = ({ startGame }) => {
             </CardContent>
           </CardHeader>
         </Card>
+        </div>
       </div>
     </div>
   );

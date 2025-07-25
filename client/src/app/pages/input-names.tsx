@@ -26,13 +26,13 @@ const InputPlayerName: React.FC<InputPlayerNameProps> = ({
 }) => {
   return (
     <div>
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[url('/img.jpg')]">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[url('/img.jpg')] px-5">
         <Card className="w-full max-w-md">
           <div className="w-full  max-w-md items-left flex mx-3" onClick={endGame}>
             <ArrowLeft className="text-sm" />
           </div>
           <CardHeader className="text-center">
-            <CardTitle className="text-xl md:text-3xl font-bold font-hachi">
+            <CardTitle className="text-2xl md:text-3xl font-bold font-hachi">
               Enter Player Names
             </CardTitle>
             <CardDescription>
