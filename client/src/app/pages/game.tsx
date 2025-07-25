@@ -8,9 +8,10 @@ type GameProps = {
     gameState: any;
     currentPlayerName: string;
     endGame: () => void
+    round: number
 };
 
-const Game: React.FC<GameProps> = ({renderSquare, gameState, currentPlayerName, endGame }) => {
+const Game: React.FC<GameProps> = ({renderSquare, gameState, currentPlayerName, endGame,round }) => {
   return (
     <div>
       <div className="min-h-screen flex-col flex items-center justify-center bg-[url('/img.jpg')] px-5 md:px-0">
@@ -28,6 +29,7 @@ const Game: React.FC<GameProps> = ({renderSquare, gameState, currentPlayerName, 
                 {gameState.player2Name} (O): {gameState.player2Score}
               </span>
             </div>
+            <span className="text-gray-600 mt-2">Round: {round}</span>
             <CardDescription className="text-lg font-medium">
               {`${currentPlayerName}'s turn (${gameState.currentPlayer})`}
             </CardDescription>

@@ -30,7 +30,7 @@ const StartGame: React.FC<StartGameProps> = ({ startGame }) => {
 
   const fetchPlayerGame = async () => {
     try {
-      const res = await axios.get("https://tic-toc-toe-6slw.onrender.com/players")
+      const res = await axios.get("http://localhost:8000/players")
       setPlayerState(res.data)
     } catch (error) {
       console.log(error)
@@ -78,7 +78,7 @@ const StartGame: React.FC<StartGameProps> = ({ startGame }) => {
               {playerState.length > 0 && playerState.map((player: Player, index: number) => (
                 <div key={index} className="flex flex-col gap-2 mt-5 w-full">
                   <span className=" text-xs md:text-sm">{player.player1Name} ({player.player1Wins}) vs {player.player2Name} ({player.player2Wins}) </span>
-                  <span className="text-xs text-gray-600"><span className="font-bold text-black italic">Draw :</span>{player.Draw} <span className="font-bold text-black italic">Winner :</span>{player.winner}</span>
+                  <span className="text-xs text-gray-600"><span className="font-bold text-black italic">Draw :</span>{player.Draw} <span className="font-bold text-black italic">Winner :</span>{player.player1Wins > player.player2Wins ? player.player1Name : player.player2Name}</span>
                 </div>
               ))}
             </CardContent>

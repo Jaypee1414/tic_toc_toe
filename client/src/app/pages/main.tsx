@@ -36,17 +36,18 @@ export default function Home() {
     player1Score: 0,
     player2Score: 0,
   })
+  const [round, setRound] = useState<number>(1)
 
   const savePlayerResult = async() =>{
     try {
-      console.log("triggere ")
       const winnerName = gameState.winner === "X" ? gameState.player1Name : gameState.player2Name
       const loseName = gameState.winner !== "X" ? gameState.player1Name : gameState.player2Name
 
-      const res = await axios.post("https://tic-toc-toe-6slw.onrender.com/players/game-result", {
+      const res = await axios.post("http://localhost:8000/players/game-result", {
         ...gameState,
         winnerName,
-        loseName
+        loseName,
+        round
       })
       console.log(res)
     } catch (error) {
@@ -94,6 +95,7 @@ export default function Home() {
   }
 
   const continueGame = () => {
+    setRound((prev) => prev + 1)
     setGameState((prev) => ({
       ...prev,
       screen: "game",
@@ -105,6 +107,7 @@ export default function Home() {
   }
 
   const endGame = () => {
+    setRound(1)
     setGameState({
       screen: "start",
       player1Name: "",
@@ -145,7 +148,7 @@ export default function Home() {
     const currentPlayerName = gameState.currentPlayer === "X" ? gameState.player1Name : gameState.player2Name
 
     return (
-      <Game renderSquare={renderSquare} gameState={gameState} currentPlayerName={currentPlayerName} endGame={endGame} />
+      <Game renderSquare={renderSquare} gameState={gameState} currentPlayerName={currentPlayerName} endGame={endGame}  round={round}/>
     )
   }
 
