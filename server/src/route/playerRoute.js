@@ -16,7 +16,8 @@ router.post('/game-result', async (req, res) => {
       winnerName,
       player1Score,
       player2Score,
-      isDraw
+      isDraw,
+      round
     } = req.body;
 
     const drawCount = isDraw ? 1 : 0;
@@ -27,18 +28,22 @@ router.post('/game-result', async (req, res) => {
       ]
     });
 
-    console.log(winnerName)
+
     if (existingMatch) {
+      if(round === 1){
+        existingMatch.player1Wins += player1Score;
+        existingMatch.player2Wins += player2Score;
+      }else{
+        existingMatch.player1Wins += ( player1Score - existingMatch.player1Wins);
+        existingMatch.player2Wins += (player2Score - existingMatch.player2Wins);
+      }
       existingMatch.player1Name = player1Name;
       existingMatch.player2Name = player2Name;
-      existingMatch.player1Wins += (player1Score - existingMatch.player1Wins);
-      existingMatch.player2Wins += (player2Score  - existingMatch.player2Wins);
       existingMatch.winner = winnerName;
       existingMatch.Draw += drawCount;
       existingMatch.playedAt = new Date();
 
       await existingMatch.save();
-
       return res.status(200).json({ message: 'Match updated successfully', match: existingMatch });
     } else {
 
