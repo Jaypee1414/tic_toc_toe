@@ -43,7 +43,7 @@ const StartGame: React.FC<StartGameProps> = ({ startGame }) => {
   console.log(playerState)
   return (
     <div>
-      <div className="min-h-screen w-full flex flex-col md:flex-row items-center justify-evenly md:justify-between bg-[url('/img.jpg')] p-4">
+      <div className="min-h-screen w-full flex flex-col md:flex-row items-center justify-evenly md:justify-between bg-[url('/img.jpg')] ">
         <div className="w-full px-5 md:px-0  items-center flex justify-center">
           <Card className="w-full max-w-md">
             <CardHeader className="text-center">
