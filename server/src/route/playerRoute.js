@@ -27,11 +27,12 @@ router.post('/game-result', async (req, res) => {
       ]
     });
 
+    console.log(winnerName)
     if (existingMatch) {
       existingMatch.player1Name = player1Name;
       existingMatch.player2Name = player2Name;
-      existingMatch.player1Wins += player1Score;
-      existingMatch.player2Wins += player2Score;
+      existingMatch.player1Wins += (player1Score - existingMatch.player1Wins);
+      existingMatch.player2Wins += (player2Score  - existingMatch.player2Wins);
       existingMatch.winner = winnerName;
       existingMatch.Draw += drawCount;
       existingMatch.playedAt = new Date();
