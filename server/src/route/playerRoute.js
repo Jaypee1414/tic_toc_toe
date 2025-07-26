@@ -29,13 +29,23 @@ router.post('/game-result', async (req, res) => {
     });
 
 
+    
     if (existingMatch) {
       if(round === 1){
         existingMatch.player1Wins += player1Score;
         existingMatch.player2Wins += player2Score;
       }else{
-        existingMatch.player1Wins += ( player1Score - existingMatch.player1Wins);
-        existingMatch.player2Wins += (player2Score - existingMatch.player2Wins);
+        // console.log(player1Score, "player1Score")
+        // console.log(existingMatch.player1Wins, "existingMatch.player1Wins")
+        // console.log(  existingMatch.player1Wins , " existingMatch.player1Wins +=" ,  Math.abs(player1Score - existingMatch.player1Wins), " Math.abs(player1Score - existingMatch.player1Wins)" )
+        // existingMatch.player1Wins += Math.abs(player1Score - existingMatch.player1Wins);
+        // existingMatch.player2Wins += Math.abs(player2Score - existingMatch.player2Wins);
+        // console.log(existingMatch.player1Wins,"existingMatch.player1Wins")
+        if(player1Name === winnerName){
+        existingMatch.player1Wins += 1
+        }else{
+          existingMatch.player2Wins += 1
+        }
       }
       existingMatch.player1Name = player1Name;
       existingMatch.player2Name = player2Name;
